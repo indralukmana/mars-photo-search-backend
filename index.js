@@ -46,6 +46,6 @@ app.get('/search/sol/:sol/camera/:camera', (req, res) => {
 		});
 });
 
-app.listen(port, () =>
+app.listen(process.env.PORT || port, () =>
 	console.log(`Mars rover photo API is listening on port ${port}!`)
 );
