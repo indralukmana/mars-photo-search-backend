@@ -6,7 +6,7 @@ const port = 3000;
 //ecample: https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
 const URL = `https://api.nasa.gov/mars-photos/api/v1/rovers`;
 const DEFAULT_SOL = 1;
-const DEFAULT_CAME = 'mast';
+const DEFAULT_CAMERA = 'mast';
 const API_KEY = 'DEMO_KEY';
 
 // app.get('/', (req, res) => res.send('Hello World!'));
