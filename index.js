@@ -12,7 +12,7 @@ const API_KEY = 'DEMO_KEY';
 // app.get('/', (req, res) => res.send('Hello World!'));
 // app.get('/', (req, res) => res.json({ content: 'Hssslo World!' }));
 
-app.get('/search/sol/:sol/camera/:camera', (req, res) => {
+app.get('/api/search/sol/:sol/camera/:camera', (req, res) => {
 	// const result = axios.get(`${url}/curiosity/photos?sol=1$api_key=DEMO_KEY`);
 
 	const sol = req.params.sol;
