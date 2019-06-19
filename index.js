@@ -14,13 +14,16 @@ const API_KEY = 'DEMO_KEY';
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/search/sol/:sol/camera/:camera', (req, res) => {
+app.get('/api/search/rover/:rover/sol/:sol/camera/:camera', (req, res) => {
+	const rover = req.params.rover;
 	const sol = req.params.sol;
 	const camera = req.params.camera;
 
+	console.log(req.params);
+
 	axios
 		.get(
-			`${URL}/curiosity/photos?sol=${sol ? sol : DEFAULT_SOL}&camera=${
+			`${URL}/${rover}/photos?sol=${sol ? sol : DEFAULT_SOL}&camera=${
 				camera ? camera : DEFAULT_CAMERA
 			}&api_key=${API_KEY}`
 		)
