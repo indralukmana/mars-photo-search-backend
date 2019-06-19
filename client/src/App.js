@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 // const API = 'http://localhost:3333/api/search/sol/1/camera/mast';
+const base_url = 'https://mars-photo-search.herokuapp.com/';
 
 class App extends Component {
 	state = {
@@ -32,7 +33,7 @@ class App extends Component {
 	handleSearch = () => {
 		const { sol, camera, rover } = this.state;
 
-		const API = `http://localhost:3333/api/search/rover/${rover}/sol/${sol}/camera/${camera}`;
+		const API = `${base_url}/api/search/rover/${rover}/sol/${sol}/camera/${camera}`;
 
 		this.setState({ loading: true, searched: false });
 
