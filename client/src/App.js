@@ -10,7 +10,8 @@ class App extends Component {
 		loading: false,
 		sol: 2,
 		camera: 'navcam',
-		rover: 'spirit'
+		rover: 'spirit',
+		searched: false
 	};
 
 	// TODO: Handle error
@@ -33,18 +34,22 @@ class App extends Component {
 
 		const API = `http://localhost:3333/api/search/rover/${rover}/sol/${sol}/camera/${camera}`;
 
-		this.setState({ loading: true });
+		this.setState({ loading: true, searched: false });
 
 		fetch(API)
 			.then(response => response.json())
 			.then(result => {
-				this.setState({ data: result.data, loading: false });
+				this.setState({
+					data: result.data,
+					loading: false,
+					searched: true
+				});
 			})
 			.catch(error => this.setState({ error }));
 	};
 
 	render() {
-		const { data, sol, camera, loading, rover } = this.state;
+		const { data, sol, camera, loading, rover, searched } = this.state;
 
 		return (
 			<div className="App">
@@ -96,6 +101,16 @@ class App extends Component {
 						<h2>Fetching data from NASA, please wait...</h2>
 					)}
 					<div className="gallery">
+						{searched === true && data.length === 0 && (
+							<div>
+								<h2>There are no photos for these options</h2>
+								<ul>
+									<li>Rover: {rover}</li>
+									<li>Sol: {sol}</li>
+									<li>Camera: {camera}</li>
+								</ul>
+							</div>
+						)}
 						{data.length > 0 &&
 							data.map(item => (
 								<div className="photo">
