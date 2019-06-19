@@ -10,7 +10,7 @@ const DEFAULT_CAMERA = 'mast';
 const API_KEY = 'DEMO_KEY';
 
 // app.get('/', (req, res) => res.send('Hello World!'));
-app.get('/', (req, res) => res.json({ content: 'Hssslo World!' }));
+// app.get('/', (req, res) => res.json({ content: 'Hssslo World!' }));
 
 app.get('/search/sol/:sol/camera/:camera', (req, res) => {
 	// const result = axios.get(`${url}/curiosity/photos?sol=1$api_key=DEMO_KEY`);
@@ -44,6 +44,10 @@ app.get('/search/sol/:sol/camera/:camera', (req, res) => {
 		.finally(function() {
 			console.log('finally always');
 		});
+});
+
+app.get('*', (req, res) => {
+	res.send('TODO: Client');
 });
 
 app.listen(process.env.PORT || port, () =>
