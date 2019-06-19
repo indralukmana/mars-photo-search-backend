@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 const port = 3000;
 
@@ -9,8 +10,9 @@ const DEFAULT_SOL = 1;
 const DEFAULT_CAMERA = 'mast';
 const API_KEY = 'DEMO_KEY';
 
-app.get('/api/search/sol/:sol/camera/:camera', (req, res) => {
+app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.get('/api/search/sol/:sol/camera/:camera', (req, res) => {
 	const sol = req.params.sol;
 	const camera = req.params.camera;
 
@@ -42,7 +44,7 @@ app.get('/api/search/sol/:sol/camera/:camera', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-	res.send('TODO: Client');
+	res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
 });
 
 app.listen(process.env.PORT || port, () =>
