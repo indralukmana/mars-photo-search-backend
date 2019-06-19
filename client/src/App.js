@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 // const API = 'http://localhost:3333/api/search/sol/1/camera/mast';
-const base_url = 'https://mars-photo-search.herokuapp.com/';
+const base_url = 'https://mars-photo-search.herokuapp.com';
 
 class App extends Component {
 	state = {
