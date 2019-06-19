@@ -1,43 +1,69 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const API = 'http://localhost:3333/api/search/sol/1/camera/mast';
+// const API = 'http://localhost:3333/api/search/sol/1/camera/mast';
 
 class App extends Component {
 	state = {
 		data: [],
 		error: null,
 		loading: false,
-		sol: 0,
-		camera: 'fhaz'
+		sol: 2,
+		camera: 'navcam',
+		rover: 'spirit'
 	};
 
 	// TODO: Handle error
-	componentDidMount() {
-		fetch(API)
-			.then(response => response.json())
-			.then(result => {
-				this.setState({ data: result.data });
-			})
-			.catch(error => this.setState({ error }));
-	}
+	// componentDidMount() {
+	// 	fetch(API)
+	// 		.then(response => response.json())
+	// 		.then(result => {
+	// 			this.setState({ data: result.data });
+	// 		})
+	// 		.catch(error => this.setState({ error }));
+	// }
 
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
+	// TODO: Handle Error
+	handleSearch = () => {
+		const { sol, camera, rover } = this.state;
+
+		const API = `http://localhost:3333/api/search/rover/${rover}/sol/${sol}/camera/${camera}`;
+
+		this.setState({ loading: true });
+
+		fetch(API)
+			.then(response => response.json())
+			.then(result => {
+				this.setState({ data: result.data, loading: false });
+			})
+			.catch(error => this.setState({ error }));
+	};
+
 	render() {
-		const { data, sol, camera } = this.state;
+		const { data, sol, camera, loading, rover } = this.state;
 
 		return (
 			<div className="App">
 				<header className="App-header">
 					<h1>Mars Rovers Photo Search App</h1>
-					<p>Under furious development</p>
-					<p>{API}</p>
 				</header>
 				<main>
-					<div>
+					<div className="search">
+						<label>
+							Rover:
+							<select
+								value={rover}
+								name="rover"
+								onChange={this.handleChange}>
+								<option value="curiosity">curiosity</option>
+								<option value="opportunity">opportunity</option>
+								<option value="spirit">spirit</option>
+							</select>
+						</label>
 						<label>
 							Sol:
 							<input
@@ -64,17 +90,22 @@ class App extends Component {
 								</option>
 							</select>
 						</label>
+						<button onClick={this.handleSearch}>Search</button>
 					</div>
+					{loading && (
+						<h2>Fetching data from NASA, please wait...</h2>
+					)}
 					<div className="gallery">
-						{data.map(item => (
-							<div class="photo">
-								<img
-									key={item.id}
-									src={item.img_src}
-									alt="mars"
-								/>
-							</div>
-						))}
+						{data.length > 0 &&
+							data.map(item => (
+								<div className="photo">
+									<img
+										key={item.id}
+										src={item.img_src}
+										alt="mars"
+									/>
+								</div>
+							))}
 					</div>
 				</main>
 			</div>
