@@ -7,7 +7,9 @@ class App extends Component {
 	state = {
 		data: [],
 		error: null,
-		loading: false
+		loading: false,
+		sol: 0,
+		camera: 'fhaz'
 	};
 
 	// TODO: Handle error
@@ -20,8 +22,12 @@ class App extends Component {
 			.catch(error => this.setState({ error }));
 	}
 
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+
 	render() {
-		const { data } = this.state;
+		const { data, sol, camera } = this.state;
 
 		return (
 			<div className="App">
@@ -29,10 +35,48 @@ class App extends Component {
 					<h1>Mars Rovers Photo Search App</h1>
 					<p>Under furious development</p>
 					<p>{API}</p>
-					{data.map(item => (
-						<img key={item.id} src={item.img_src} alt="mars" />
-					))}
 				</header>
+				<main>
+					<div>
+						<label>
+							Sol:
+							<input
+								type="number"
+								name="sol"
+								value={sol}
+								onChange={this.handleChange}
+							/>
+						</label>
+						<label>
+							Camera:
+							<select
+								value={camera}
+								name="camera"
+								onChange={this.handleChange}>
+								<option value="fhaz">
+									Front Hazard Avoidance Camera
+								</option>
+								<option value="rhaz">
+									Rear Hazard Avoidance Camera
+								</option>
+								<option value="navcam">
+									Navigation Camera
+								</option>
+							</select>
+						</label>
+					</div>
+					<div className="gallery">
+						{data.map(item => (
+							<div class="photo">
+								<img
+									key={item.id}
+									src={item.img_src}
+									alt="mars"
+								/>
+							</div>
+						))}
+					</div>
+				</main>
 			</div>
 		);
 	}
