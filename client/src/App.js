@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 
 // const API = 'http://localhost:3333/api/search/sol/1/camera/mast';
 const base_url = 'https://mars-photo-search.herokuapp.com';
@@ -14,16 +14,6 @@ class App extends Component {
 		rover: 'spirit',
 		searched: false
 	};
-
-	// TODO: Handle error
-	// componentDidMount() {
-	// 	fetch(API)
-	// 		.then(response => response.json())
-	// 		.then(result => {
-	// 			this.setState({ data: result.data });
-	// 		})
-	// 		.catch(error => this.setState({ error }));
-	// }
 
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
