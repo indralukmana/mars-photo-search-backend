@@ -4,12 +4,13 @@ const axios = require('axios');
 const path = require('path');
 const app = express();
 const port = 3333;
+require('dotenv').config();
 
 //example: https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
 const URL = `https://api.nasa.gov/mars-photos/api/v1/rovers`;
 const DEFAULT_SOL = 1;
 const DEFAULT_CAMERA = 'mast';
-const API_KEY = 'DEMO_KEY';
+const API_KEY = process.env.API_KEY;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
