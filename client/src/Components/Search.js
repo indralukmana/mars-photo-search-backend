@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { TextField } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -155,11 +156,12 @@ export default function Search(props) {
 				</Grid>
 
 				{loading && (
-					<Grid item xs={12}>
-						<Typography variant="body1" align="center">
+					<Container align="center">
+						{/* <Typography variant="body1" align="center">
 							Fetching data from NASA, please wait...
-						</Typography>
-					</Grid>
+						</Typography> */}
+						<CircularProgress />
+					</Container>
 				)}
 			</Grid>
 		</Container>
