@@ -69,12 +69,7 @@ export default function Search(props) {
 
 	return (
 		<Container maxWidth="md">
-			<Grid
-				wrap
-				container
-				justify="center"
-				alignItems="flex-start"
-				spacing={3}>
+			<Grid container justify="center" spacing={3}>
 				<Grid item xs>
 					<FormControl
 						fullWidth
@@ -160,7 +155,7 @@ export default function Search(props) {
 				</Grid>
 
 				{loading && (
-					<Grid item xs={12} alignItems="center">
+					<Grid item xs={12}>
 						<Typography variant="body1" align="center">
 							Fetching data from NASA, please wait...
 						</Typography>

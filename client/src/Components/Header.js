@@ -25,7 +25,7 @@ export default function Header() {
 						variant="h5"
 						component="h1"
 						align="center"
-						color="text-primary"
+						color="textPrimary"
 						className={classes.heading}>
 						Mars Photo Search App
 					</Typography>
