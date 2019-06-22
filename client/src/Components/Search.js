@@ -102,7 +102,10 @@ export default function Search(props) {
 						type="number"
 						name="sol"
 						id="sol-input"
-						// labelWidth={labelWidth}
+						inputProps={{
+							min: 1,
+							max: 1000
+						}}
 						value={values.sol}
 						onChange={handleInputChange('sol')}
 						helperText={
