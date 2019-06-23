@@ -5,17 +5,17 @@ import Header from './Components/Header';
 import Search from './Components/Search';
 import Gallery from './Components/Gallery';
 
-const base_url = 'http://localhost:3333';
-// const base_url = 'https://mars-photo-search.herokuapp.com';
+let base_url = process.env.REACT_APP_BASE_URL;
+base_url = base_url ? base_url : 'http://localhost:3333';
 
 class App extends Component {
 	state = {
 		data: [],
 		error: null,
 		loading: false,
-		sol: 2,
+		sol: 1,
 		camera: 'navcam',
-		rover: 'spirit',
+		rover: 'curiosity',
 		searched: false
 	};
 
