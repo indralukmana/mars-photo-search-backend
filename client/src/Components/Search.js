@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	formControl: {
 		// margin: theme.spacing(1),
-		paddingRight: theme.spacing(1.5)
+		// paddingRight: theme.spacing(1.5)
 		// minWidth: 120
 	},
 	rightIcon: {
@@ -70,7 +70,7 @@ export default function Search(props) {
 	return (
 		<Container maxWidth="md">
 			<Grid container justify="center" spacing={3}>
-				<Grid item xs>
+				<Grid item xs={6} md={3}>
 					<FormControl
 						fullWidth
 						className={classes.formControl}
@@ -94,8 +94,9 @@ export default function Search(props) {
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs>
+				<Grid item xs={6} md={3}>
 					<TextField
+						fullWidth
 						label="Sol"
 						variant="outlined"
 						type="number"
@@ -142,6 +143,21 @@ export default function Search(props) {
 							</MenuItem>
 							<MenuItem value="navcam">
 								Navigation Camera
+							</MenuItem>
+							<MenuItem value="mast">Mast Camera</MenuItem>
+							<MenuItem value="chemcam">
+								Chemistry and Camera Complex
+							</MenuItem>
+							<MenuItem value="mahli">
+								Mars Hand Lens Imager
+							</MenuItem>
+							<MenuItem value="mardi">
+								Mars Descent Imager
+							</MenuItem>
+							<MenuItem value="pancam">Panoramic Camera</MenuItem>
+							<MenuItem value="minites">
+								Miniature Thermal Emission Spectrometer
+								(Mini-TES)
 							</MenuItem>
 						</Select>
 					</FormControl>

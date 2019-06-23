@@ -33,14 +33,9 @@ export default function Gallery(props) {
 		<Container className={classes.cardGrid} maxWidth="md">
 			<Grid container spacing={4}>
 				{searched === true && data.length === 0 && (
-					<div>
+					<Grid item xs>
 						<h2>There are no photos for these options</h2>
-						<ul>
-							<li>Rover: {rover}</li>
-							<li>Sol: {sol}</li>
-							<li>Camera: {camera}</li>
-						</ul>
-					</div>
+					</Grid>
 				)}
 				{data.length > 0 &&
 					data.map(photo => (
