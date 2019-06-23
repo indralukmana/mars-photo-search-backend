@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Gallery(props) {
-	const { searched, data, rover, sol, camera } = props;
+	const { searched, data } = props;
 
 	const classes = useStyles();
 
